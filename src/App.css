@@ -13,6 +13,7 @@
   height: 2rem;
   width: 6rem;
   margin: 3rem 0rem 1rem 5rem;
+  cursor: pointer;
 }
 .step-name{
   text-align: center;

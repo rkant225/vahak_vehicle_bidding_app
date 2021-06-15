@@ -34,7 +34,7 @@ const Header = (props) => {
 
     return (
         <div>
-            <img className="logo" src={vahakLogo}/>
+            <img className="logo" src={vahakLogo} onClick={()=>{history.push('/home')}}/>
             <div className="step-name">{stepName}</div>
         </div>
     )
