@@ -38,7 +38,7 @@ const StepThree = (props) => {
         <div className="step-container">
             <JourneyDetails/>            
             <BiddingDetails/>            
-            <div style={{marginTop : '1rem', width : '50%'}}>
+            <div style={{marginTop : '1rem', width : '65%', padding : '1rem'}}>
                 We’ve sent an OTP to your mobile number, Please enter it below to submit your bid.
                 <br/>
                 <b>{mobileNo}</b>

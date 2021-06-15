@@ -70,7 +70,7 @@ const StepTwo = (props) => {
 
                 
                     <TextField name="mobileNo" type="number" className="" variant="outlined" label="Enter your 10 digit mobile number *" value={formik.values.mobileNo} onChange={formik.handleChange} error={formik.touched.mobileNo && Boolean(formik.errors.mobileNo)} helperText={formik.touched.mobileNo && formik.errors.mobileNo} style={{width : '100%'}}/>
-                    <div className="get-updates-checkbox-container" style={{width : '96%', padding : '1rem', backgroundColor : 'rgb(0,0,0,.1)', marginBottom : '1rem', borderRadius : '5px'}}>
+                    <div className="get-updates-checkbox-container">
                         <input type="checkbox" />
                         <span>Get updates on </span>
                         <span className="whatsapp" style={{color : '#40C351'}}>

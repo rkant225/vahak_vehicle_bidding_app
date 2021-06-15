@@ -2,7 +2,7 @@
   --primaryColor : '#2355FC';
   --secondaryColor : '#CDCDCD29';
 }
-/*============================== Header =================================*/
+/*============================== App =================================*/
 .app{
   position: relative;
   height: 100vh;
@@ -89,6 +89,22 @@
   color: #010A10;
   font-weight: 600;
 }
+.bid-details-source-destination{
+  width: 40%;
+  color: #010A10;
+  font-weight: 600;
+}
+
+.fixed-price-container{
+  font-size: 2.5rem;
+}
+.fixed-price-amount{
+  font-size: 3rem;
+}
+
+.fixed-price-text{
+  font-size: 1.3rem;
+}
 
 .textbox-bidding-amount-container{
   width: max-content;
@@ -120,6 +136,14 @@ input[type="checkbox"]{
   width: 1rem;
   margin-right: .5rem;
   margin-bottom: -.5rem;
+}
+
+.get-updates-checkbox-container{
+  width: 96%;
+  padding: 1rem;
+  background-color: rgb(0,0,0,.1);
+  margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
 /*============================== StepThree =================================*/
@@ -201,4 +225,54 @@ input[type="checkbox"]{
 
 .not-found-button{
   font-size: 2rem;
+}
+
+
+@media (max-width : 600px){
+  .logo{
+    height: 2rem;
+    width: 5rem;
+    margin: 1rem 0rem 1rem 3rem;
+  }
+  .step-name{
+    font-size: 25px;
+  }
+
+  .step-container{
+    width: 100%;
+  }
+
+
+
+  .form{
+    width: 90%;
+  }
+
+  .journey-details-source-destination{
+    width: 80%;
+  }
+
+
+  .get-updates-checkbox-container{
+    width: 90%;
+  }
+
+
+  .otp-inputs-container{
+    width: 80%;
+  }
+
+  .bid-details-source-destination{
+    width: 60%;
+  }
+  .fixed-price-container{
+    font-size: 1.9rem;
+  }
+  .fixed-price-amount{
+    font-size: 2rem;
+  }
+  
+  .fixed-price-text{
+    font-size: .9rem;
+  }
 }
