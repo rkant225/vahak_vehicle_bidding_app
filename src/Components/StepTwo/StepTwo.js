@@ -27,7 +27,7 @@ const StepTwo = (props) => {
         remark: biddingData.remark || '',
     };
 
-    const validationSchema = Yup.object({
+    const validationSchema = biddingData.isAuthenticated ?  Yup.object({}) :  Yup.object({
         mobileNo: Yup.string().matches(MOBILE_NUMBER_REGEX, 'Mobile number is not valid').required('Mobile number is Required.').min(10, "Too short").max(10, "Too long"),
         userName: Yup.string().required('Name is Required.'),
     });
@@ -43,8 +43,11 @@ const StepTwo = (props) => {
         setBiddingData({...biddingData, biddingAmount, mobileNo, userName, remark})
 
         sessionStorage.setItem('biddingData', JSON.stringify({...biddingData, biddingAmount, mobileNo, userName, remark}));
-
-        history.push('/step-three')
+        if(biddingData.isAuthenticated){
+            history.push('/step-four')
+        } else {
+            history.push('/step-three')
+        }
     }
 
     const formik = useFormik({
@@ -69,17 +72,21 @@ const StepTwo = (props) => {
                 </div>
 
                 
-                    <TextField name="mobileNo" type="number" className="" variant="outlined" label="Enter your 10 digit mobile number *" value={formik.values.mobileNo} onChange={formik.handleChange} error={formik.touched.mobileNo && Boolean(formik.errors.mobileNo)} helperText={formik.touched.mobileNo && formik.errors.mobileNo} style={{width : '100%'}}/>
-                    <div className="get-updates-checkbox-container">
-                        <input type="checkbox" />
-                        <span>Get updates on </span>
-                        <span className="whatsapp" style={{color : '#40C351'}}>
-                            <i class="fab fa-whatsapp" style={{marginRight : '.5rem'}}></i>
-                            <span>Whatsapp</span>
-                        </span>
-                    </div>
+                    {!biddingData.isAuthenticated &&
+                        <>
+                            <TextField name="mobileNo" type="number" className="" variant="outlined" label="Enter your 10 digit mobile number *" value={formik.values.mobileNo} onChange={formik.handleChange} error={formik.touched.mobileNo && Boolean(formik.errors.mobileNo)} helperText={formik.touched.mobileNo && formik.errors.mobileNo} style={{width : '100%'}}/>
+                            <div className="get-updates-checkbox-container">
+                                <input type="checkbox" />
+                                <span>Get updates on </span>
+                                <span className="whatsapp" style={{color : '#40C351'}}>
+                                    <i class="fab fa-whatsapp" style={{marginRight : '.5rem'}}></i>
+                                    <span>Whatsapp</span>
+                                </span>
+                            </div>
+                            <TextField name="userName" className="text-box-large" variant="outlined" label="Enter your name *" value={formik.values.userName} onChange={formik.handleChange} error={formik.touched.userName && Boolean(formik.errors.userName)} helperText={formik.touched.userName && formik.errors.userName}/>
+                        </>
+                    }
 
-                    <TextField name="userName" className="text-box-large" variant="outlined" label="Enter your name *" value={formik.values.userName} onChange={formik.handleChange} error={formik.touched.userName && Boolean(formik.errors.userName)} helperText={formik.touched.userName && formik.errors.userName}/>
                     <TextField name="remark" className="text-box-large" variant="outlined" label="Enter remarks (optional)" value={formik.values.remark} onChange={formik.handleChange} error={formik.touched.remark && Boolean(formik.errors.remark)} helperText={formik.touched.remark && formik.errors.remark}/>
 
                     <Button className="button" variant="contained" color="primary" disabled={biddingAmount <= 0} type="submit">

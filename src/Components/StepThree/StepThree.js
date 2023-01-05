@@ -28,6 +28,7 @@ const StepThree = (props) => {
 
     const tryToNavigateToStepFour = ()=>{
         if(`${otpDigitOne}${otpDigitTwo}${otpDigitThree}${otpDigitFour}` == '1234'){
+            localStorage.setItem("isAuthenticated", true)
             history.push('/step-four')
         } else{
             setOtpError("Please enter valid OTP.")

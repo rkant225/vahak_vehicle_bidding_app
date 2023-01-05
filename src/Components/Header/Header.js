@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import vahakLogo from '../../Assets/vahakLogo.PNG';
 import { useHistory } from 'react-router';
+import { useRef } from 'react';
+import useHoverHook from '../../Components/Utilities/useHoverHook';
 
 const Header = (props) => {
     const {history} = props;
 
+    const logo = useRef();
+    const stepNameTest = useRef();
+
     const [stepName, setStepName] = useState("");
+
+    const isLogoHovered = useHoverHook(logo.current);
+    const isStepNameHovered = useHoverHook(stepNameTest.current);
+
+    
+    console.log("LOGO", isLogoHovered)
+    console.log("STEP_NAME", isStepNameHovered)
+
 
     const updateStepName = () =>{
         const pathName = history.location.pathname;
@@ -34,8 +47,8 @@ const Header = (props) => {
 
     return (
         <div>
-            <img className="logo" src={vahakLogo} onClick={()=>{history.push('/home')}}/>
-            <div className="step-name">{stepName}</div>
+            <img ref={logo} className="logo" src={vahakLogo} onClick={()=>{history.push('/home')}}/>
+            <div ref={stepNameTest} className="step-name">{stepName}</div>
         </div>
     )
 }

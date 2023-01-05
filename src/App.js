@@ -9,11 +9,17 @@ import NotFound from './Components/NotFound/NotFound'
 import Loader from './Components/Loader/Loader'
 import './App.css';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
 export const BiddingContext = React.createContext();
 
 function App() {
-  const [biddingData, setBiddingData] = useState(JSON.parse(sessionStorage.getItem("biddingData")) || {isLoading : false, biddingAmount : 0});
+  const [biddingData, setBiddingData] = useState(JSON.parse(sessionStorage.getItem("biddingData")) || {isLoading : false, biddingAmount : 0, isAuthenticated : false});
+
+  useEffect(()=>{
+    setBiddingData({...biddingData, isAuthenticated : JSON.parse(localStorage.getItem("isAuthenticated"))});
+  },[])
+  
 
   return (
     <div className="app">
